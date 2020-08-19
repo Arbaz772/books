@@ -1,10 +1,8 @@
-//https://developer.nytimes.com/
-//https://developer.nytimes.com/docs/books-product/1/overview
-//https://any-api.com/nytimes_com/books_api/docs/API_Description
 require('dotenv').config({ path: `${__dirname}/.env` });
-console.log(process.env.API_TOKEN)
+
 const express = require('express');
 const bodyParser = require('body-parser');
+const https = require('https');
 
 const app = express();
 const port = 3000;
@@ -13,7 +11,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.render('home', { pageTitle: 'Home'});
+  let url = 'https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&api-key=';
+  url += process.env.API_TOKEN;
+
+  https.get(url, (response) => {
+    response.on('data', (data) => {
+      const bookData = JSON.parse(data);
+
+      res.render('home', { pageTitle: 'Home', numberOfResults: bookData.num_results });
+    });
+  });
 });
 
 app.listen(port, () => {
