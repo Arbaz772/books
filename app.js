@@ -1,6 +1,8 @@
 //https://developer.nytimes.com/
 //https://developer.nytimes.com/docs/books-product/1/overview
 //https://any-api.com/nytimes_com/books_api/docs/API_Description
+require('dotenv').config({ path: `${__dirname}/.env` });
+console.log(process.env.API_TOKEN)
 const express = require('express');
 const bodyParser = require('body-parser');
 
