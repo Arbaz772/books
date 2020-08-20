@@ -1,4 +1,6 @@
 <%- include('partials/header'); %>
 
-<p><%= numberOfResults %></p>
+<% books.forEach((book) => { %>
+<p><%= book.name %></p>
+<% }); %>
 <%- include('partials/footer'); %>
