@@ -21,8 +21,17 @@ As the application requires an API Key to interact with the NY Times Books API, 
 firstly sign up for one.
 
 Once you have a key you will need to create a file named ".env" in the project root directory:
-cd Books
+```
 touch .env
+```
 
 You should then add your API key to the .env file in the following format:
 API_KEY=<Insert API key here as plain text, no quotes needed>
+
+## Running the application
+To run the app you can execute the following command in the project root directory:
+```
+node app.js
+```
+
+Using your preferred web browser you can navigate to localhost:3000 to view and use the app.
