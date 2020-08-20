@@ -2,7 +2,7 @@
 <div class="grid-container">
   <% books.forEach((book) => { %>
   <div class="grid-item">
-    <h3><%= book.rank %></h3>
+    <h3><%= book.rank %>   <%= book.rankIcon %></h3>
     <h3><%= book.name %></h3>
     <p><%= book.description %></p>
     <img src="https://s1.nyt.com/du/books/images/<%= book.ISBN13 %>.jpg" alt="">
