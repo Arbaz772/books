@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     response.on('data', (data) => {
       const bookData = JSON.parse(data);
       const numOfResults = bookData.num_results; // Get the number of books returned in API call
-      let books = [];
+      const books = [];
 
       let i;
       for (i = 0; i < numOfResults; i += 1) {

@@ -1,6 +1,7 @@
 <%- include('partials/header'); %>
-
+<div class="grid-container">
 <% books.forEach((book) => { %>
-<p><%= book.name %></p>
+<div class="grid-item"><p><%= book.name %></p></div>
 <% }); %>
 <%- include('partials/footer'); %>
+</div>

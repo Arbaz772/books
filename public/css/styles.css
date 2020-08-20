@@ -1,0 +1,18 @@
+h1 {
+  font-family: 'Alata', sans-serif;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-row-gap: 25px;
+  grid-column-gap: 25px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-item {
+  background-color: grey;
+}
