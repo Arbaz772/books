@@ -31,11 +31,12 @@ app.get('/', (req, res) => {
           amazonProductUrl: bookData.results[i].amazon_product_url,
           rank: bookData.results[i].rank,
           rankLastWeek: bookData.results[i].rank_last_week,
+          ISBN13: bookData.results[i].book_details[0].primary_isbn13,
         };
 
         books.push(book);
       }
-      res.render('home', { pageTitle: 'Home', books });
+      res.render('home', { pageTitle: 'Hardcover Fiction', books });
     });
   });
 });

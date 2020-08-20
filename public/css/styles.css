@@ -4,15 +4,22 @@ h1 {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  text-align: center;
 }
 
 .grid-container {
   display: grid;
-  grid-row-gap: 25px;
-  grid-column-gap: 25px;
-  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 25px;
+  column-gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .grid-item {
-  background-color: grey;
+  outline: 2px solid;
+  padding: 10px;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
 }
