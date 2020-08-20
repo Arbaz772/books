@@ -13,7 +13,7 @@ app.use(express.static('public'));
 // Home page, this will show a list of best selling books
 app.get('/', (req, res) => {
   let url = 'https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&api-key=';
-  url += process.env.API_TOKEN;
+  url += process.env.API_KEY;
 
   https.get(url, (response) => {
     response.on('data', (data) => {
@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 
       let i;
       for (i = 0; i < numOfResults; i += 1) {
+        // Assign some key book info to an object
         const book = {
           name: bookData.results[i].book_details[0].title,
           description: bookData.results[i].book_details[0].description,
@@ -34,7 +35,7 @@ app.get('/', (req, res) => {
 
         books.push(book);
       }
-      res.render('home', { pageTitle: 'Home', books: books });
+      res.render('home', { pageTitle: 'Home', books });
     });
   });
 });
