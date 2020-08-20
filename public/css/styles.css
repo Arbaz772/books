@@ -5,9 +5,12 @@ h1 {
 body {
   font-family: 'Open Sans', sans-serif;
   text-align: center;
+  background-color: #ebebeb;
 }
 
 .grid-container {
+  width: 90%;
+  margin: 0 auto;
   display: grid;
   row-gap: 25px;
   column-gap: 25px;
@@ -15,8 +18,9 @@ body {
 }
 
 .grid-item {
-  outline: 2px solid;
+  background-color: #ffffff;
   padding: 10px;
+  box-shadow: 5px 5px 10px grey;
 }
 
 img {
