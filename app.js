@@ -4,7 +4,6 @@ const nytAPI = require(`${__dirname}/public/js/nytAPI.js`);
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const https = require('https');
 
 const app = express();
 const port = 3000;

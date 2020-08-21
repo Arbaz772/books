@@ -40,6 +40,5 @@ exports.getBestSellers = () => {
       }
     });
   });
-  //return { books };
   return { pageTitle: 'Hardcover Fiction', books }
 };

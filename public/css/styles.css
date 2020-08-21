@@ -8,7 +8,11 @@ body {
   background-color: #ebebeb;
 }
 
-.grid-container {
+.title-container {
+  padding: 20px 0;
+}
+
+.books-grid-container {
   width: 90%;
   margin: 0 auto;
   display: grid;

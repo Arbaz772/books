@@ -1,12 +1,17 @@
 <%- include('partials/header'); %>
-<div class="grid-container">
+<div class="title-container">
+  <h1><%= pageTitle %></h1>
+</div>
+
+<div class="books-grid-container">
   <% books.forEach((book) => { %>
   <div class="grid-item">
     <h3><%= book.rank %>   <%= book.rankIcon %></h3>
     <h3><%= book.name %></h3>
     <p><%= book.description %></p>
-    <img src="https://s1.nyt.com/du/books/images/<%= book.ISBN13 %>.jpg" alt="">
+    <img src="https://s1.nyt.com/du/books/images/<%= book.ISBN13 %>.jpg" alt="<%= book.name %>">
   </div>
   <% }); %>
-  <%- include('partials/footer'); %>
 </div>
+
+<%- include('partials/footer'); %>
