@@ -17,7 +17,9 @@ nytAPI.getListNames((data) => {
 });
 
 app.get('/', (req, res) => {
-  nytAPI.getBestSellers((data) => {
+  nytAPI.getBestSellers('food-and-fitness', (data) => {
+    const content = data;
+    content.listNames = listNames;
     res.render('home', data); // Get a list of valid book list names
   });
 });

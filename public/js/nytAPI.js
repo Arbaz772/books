@@ -16,8 +16,9 @@ exports.getListNames = (callback) => {
   });
 };
 
-exports.getBestSellers = (callback) => {
-  let url = 'https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&api-key=';
+exports.getBestSellers = (listName, callback) => {
+  const lName = listName || 'hardcover-fiction'; // Default to hardcover-fiction
+  let url = `https://api.nytimes.com/svc/books/v3/lists.json?list=${lName}&api-key=`;
   url += process.env.API_KEY;
 
   const books = [];
