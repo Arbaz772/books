@@ -59,9 +59,24 @@ exports.getBestSellers = (listName, callback) => {
           book.rankIcon = '(new)';
         }
 
+        book.imageURL = findValidImage(book.name, book.isbns);
+
         books.push(book);
       }
       callback({ books });
     });
   });
 };
+
+function findValidImage(temp, isbns) {
+  let url;
+  isbns.every((isbn) => {
+    url = `https://s1.nyt.com/du/books/images/${isbn.isbn13}.jpg`;
+    https.get(url, (response) => {
+      if (response.statusCode === 200) {
+        return false;
+      }
+    });
+  });
+  return url;
+}

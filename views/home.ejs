@@ -9,7 +9,7 @@
     <h3><%= book.rank %>   <%= book.rankIcon %></h3>
     <h3><%= book.name %></h3>
     <p><%= book.description %></p>
-    <img src="https://s1.nyt.com/du/books/images/<%= book.ISBN13 %>.jpg" alt="<%= book.name %>">
+    <img src="<%= book.imageURL %>" alt="<%= book.name %>">
   </div>
   <% }); %>
 </div>
