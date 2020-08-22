@@ -17,16 +17,8 @@ nytAPI.getListNames((data) => {
 });
 
 app.get('/', (req, res) => {
-  // Promise utilised to allow enough time for data to be returned before rendering page
-  const promiseToGetBooks = new Promise((resolve, reject) => {
-    const pageContent = nytAPI.getBestSellers();
-    setTimeout(() => {
-      resolve(pageContent);
-    }, 1000);
-  });
-
-  promiseToGetBooks.then((data) => {
-    res.render('home', data);
+  nytAPI.getBestSellers((data) => {
+    res.render('home', data); // Get a list of valid book list names
   });
 });
 

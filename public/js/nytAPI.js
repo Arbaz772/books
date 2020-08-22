@@ -16,7 +16,7 @@ exports.getListNames = (callback) => {
   });
 };
 
-exports.getBestSellers = () => {
+exports.getBestSellers = (callback) => {
   let url = 'https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&api-key=';
   url += process.env.API_KEY;
 
@@ -55,7 +55,7 @@ exports.getBestSellers = () => {
 
         books.push(book);
       }
+      callback({ pageTitle: 'Hardcover Fiction', books });
     });
   });
-  return { pageTitle: 'Hardcover Fiction', books };
 };
