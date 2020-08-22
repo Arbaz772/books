@@ -20,7 +20,7 @@ exports.getBestSellers = (listName, callback) => {
   const lName = listName || 'hardcover-fiction'; // Default to hardcover-fiction
   let url = `https://api.nytimes.com/svc/books/v3/lists.json?list=${lName}&api-key=`;
   url += process.env.API_KEY;
-
+  
   const books = [];
   let chunks = [];
 
@@ -59,24 +59,29 @@ exports.getBestSellers = (listName, callback) => {
           book.rankIcon = '(new)';
         }
 
-        book.imageURL = findValidImage(book.name, book.isbns);
-
-        books.push(book);
+        findValidUrl(book.isbns, (url) => {
+          setTimeout(() => {
+            book.imageURL = url;
+            books.push(book);
+          }, 300);
+        });
       }
-      callback({ books });
+      setTimeout(() => {
+        callback({ books });
+      }, 600);
     });
   });
 };
 
-function findValidImage(temp, isbns) {
-  let url;
-  isbns.every((isbn) => {
-    url = `https://s1.nyt.com/du/books/images/${isbn.isbn13}.jpg`;
+function findValidUrl(isbns, callback) {
+  let validUrl;
+  isbns.forEach((isbn) => {
+    let url = `https://s1.nyt.com/du/books/images/${isbn.isbn13}.jpg`;
     https.get(url, (response) => {
       if (response.statusCode === 200) {
-        return false;
+        callback(url);
       }
     });
   });
-  return url;
+
 }

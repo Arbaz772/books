@@ -17,7 +17,7 @@ nytAPI.getListNames((data) => {
 });
 
 app.get('/', (req, res) => {
-  const selectedListNameId = 0;
+  const selectedListNameId = 4;
   nytAPI.getBestSellers(listNames[selectedListNameId].list_name_encoded, (data) => {
     const content = data;
     content.pageTitle = listNames[selectedListNameId].display_name;
