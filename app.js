@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 let listNames;
-nytAPI.gln((data) => {
+nytAPI.getListNames((data) => {
   listNames = data; // Get a list of valid book list names
 });
 
