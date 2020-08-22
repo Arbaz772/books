@@ -1,7 +1,7 @@
 require('dotenv').config({ path: `${__dirname}/.env` });
 const https = require('https');
 
-exports.getListNames = () => {
+exports.getListNames = (callback) => {
   let url = 'https://api.nytimes.com/svc/books/v3/lists/names.json?api-key='
   url += process.env.API_KEY;
 
@@ -11,9 +11,9 @@ exports.getListNames = () => {
     response.on('data', (data) => {
       const listNamesData = JSON.parse(data);
       listNames = listNamesData.results;
+      callback(listNames);
     });
   });
-  return listNames;
 };
 
 exports.getBestSellers = () => {

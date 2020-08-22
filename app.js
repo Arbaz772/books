@@ -11,7 +11,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-const listNames = nytAPI.getListNames(); // Get a list of valid book list names
+let listNames;
+nytAPI.gln((data) => {
+  listNames = data; // Get a list of valid book list names
+});
 
 app.get('/', (req, res) => {
   // Promise utilised to allow enough time for data to be returned before rendering page
@@ -25,6 +28,10 @@ app.get('/', (req, res) => {
   promiseToGetBooks.then((data) => {
     res.render('home', data);
   });
+});
+
+app.get('/a', (req, res) => {
+  console.log(listNames);
 });
 
 app.listen(port, () => {
