@@ -25,7 +25,8 @@ exports.getBestSellers = (listName, callback) => {
 
   https.get(url, (response) => {
     response.on('data', (data) => {
-      const bookData = JSON.parse(data);
+      const bookData = JSON.parse(JSON.stringify(data));
+
       const numOfResults = bookData.num_results;
       let i;
       for (i = 0; i < numOfResults; i += 1) {
@@ -56,7 +57,7 @@ exports.getBestSellers = (listName, callback) => {
 
         books.push(book);
       }
-      callback({ pageTitle: 'Hardcover Fiction', books });
+      callback({ books });
     });
   });
 };
