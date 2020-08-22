@@ -22,11 +22,14 @@ exports.getBestSellers = (listName, callback) => {
   url += process.env.API_KEY;
 
   const books = [];
+  let chunks = [];
 
   https.get(url, (response) => {
     response.on('data', (data) => {
-      const bookData = JSON.parse(JSON.stringify(data));
-
+      chunks.push(data);
+    }).on('end', () => {
+      const data = Buffer.concat(chunks);
+      const bookData = JSON.parse(data);
       const numOfResults = bookData.num_results;
       let i;
       for (i = 0; i < numOfResults; i += 1) {
