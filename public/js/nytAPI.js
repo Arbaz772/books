@@ -42,6 +42,7 @@ exports.getBestSellers = (listName, callback) => {
           rank: bookData.results[i].rank,
           rankLastWeek: bookData.results[i].rank_last_week,
           ISBN13: bookData.results[i].book_details[0].primary_isbn13,
+          isbns: bookData.results[i].isbns,
         };
 
         // Work out which direction the book has moved in the charts, i.e. up down same or new entry
