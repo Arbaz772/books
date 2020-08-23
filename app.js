@@ -21,18 +21,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:listName', (req, res) => {
-  const selectedListNameId = 23;
-  console.log(req.params.listName);
+  const selectedListId = listNames.findIndex(x => x.list_name_encoded === req.params.listName);
   nytAPI.getBestSellers(req.params.listName, (data) => {
     const content = data;
-    content.pageTitle = listNames[selectedListNameId].display_name;
+    content.pageTitle = listNames[selectedListId].display_name;
+    content.selectedListId = selectedListId;
     content.listNames = listNames;
     res.render('home', content);
   });
-});
-
-app.get('/a', (req, res) => {
-  console.log(listNames);
 });
 
 app.listen(port, () => {
