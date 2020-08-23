@@ -1,4 +1,12 @@
 <%- include('partials/header'); %>
+<div class="menu-grid-container">
+  <% listNames.forEach((listName) => { %>
+    <div class="menu-grid-item">
+      <a href="/<%= listName.list_name_encoded %>"><%= listName.display_name %></a>
+    </div>
+  <% }); %>
+</div>
+
 <div class="title-container">
   <h1><%= pageTitle %></h1>
 </div>

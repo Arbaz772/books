@@ -17,8 +17,13 @@ nytAPI.getListNames((data) => {
 });
 
 app.get('/', (req, res) => {
+  res.redirect('/combined-print-and-e-book-fiction');
+});
+
+app.get('/:listName', (req, res) => {
   const selectedListNameId = 23;
-  nytAPI.getBestSellers(listNames[selectedListNameId].list_name_encoded, (data) => {
+  console.log(req.params.listName);
+  nytAPI.getBestSellers(req.params.listName, (data) => {
     const content = data;
     content.pageTitle = listNames[selectedListNameId].display_name;
     content.listNames = listNames;

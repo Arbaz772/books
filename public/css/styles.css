@@ -8,6 +8,15 @@ body {
   background-color: #ebebeb;
 }
 
+.menu-grid-container {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  row-gap: 15px;
+  column-gap: 15px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .title-container {
   padding: 20px 0;
 }
