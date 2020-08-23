@@ -21,7 +21,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.grid-item {
+.book-grid-item {
   background-color: #ffffff;
   padding: 10px;
   box-shadow: 5px 5px 10px grey;
