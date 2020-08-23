@@ -67,9 +67,7 @@ exports.getBestSellers = (listName, callback) => {
           }, 500);
         });
       }
-      console.log(i)
       setTimeout(() => {
-        console.log(books.length)
         books.sort((a, b) => ((a.rank > b.rank) ? 1 : -1));
         callback({ books });
       }, 1500);
