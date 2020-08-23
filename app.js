@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
   nytAPI.getBestSellers(listNames[selectedListNameId].list_name_encoded, (data) => {
     const content = data;
     content.pageTitle = listNames[selectedListNameId].display_name;
+    content.listNames = listNames;
     res.render('home', content);
   });
 });
