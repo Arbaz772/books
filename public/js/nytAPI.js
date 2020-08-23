@@ -78,10 +78,9 @@ exports.getBestSellers = (listName, callback) => {
 };
 
 function findValidUrl(isbns, callback) {
-  let validUrl;
   let foundUrl = false;
   isbns.forEach((isbn) => {
-    let url = `https://s1.nyt.com/du/books/images/${isbn.isbn13}.jpg`;
+    const url = `https://s1.nyt.com/du/books/images/${isbn.isbn13}.jpg`;
     https.get(url, (response) => {
       if (response.statusCode === 200) {
         if (foundUrl === false) {
