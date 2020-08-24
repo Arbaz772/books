@@ -1,4 +1,3 @@
-require('dotenv').config({ path: `${__dirname}/.env` });
 const https = require('https');
 
 exports.getListNames = (callback) => {
