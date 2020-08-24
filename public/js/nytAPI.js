@@ -10,6 +10,7 @@ exports.getListNames = (callback) => {
     response.on('data', (data) => {
       const listNamesData = JSON.parse(data);
       listNames = listNamesData.results;
+      listNames.sort((a, b) => ((a.display_name > b.display_name) ? 1 : -1));
       callback(listNames);
     });
   });
