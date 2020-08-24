@@ -34,7 +34,6 @@ exports.getBestSellers = (listName, callback) => {
 
       let i;
       for (i = 0; i < numOfResults; i += 1) {
-        console.log('***********')
         if (bookData.results[i] !== undefined) {
           // Assign some key book info to an object
           const book = {
