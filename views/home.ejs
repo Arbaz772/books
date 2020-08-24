@@ -1,5 +1,6 @@
 <%- include('partials/header'); %>
-<div class="menu-grid-container">
+<button class="accordion"><h3>+ Choose Book Genre</h3></button>
+<div class="menu-grid-container panel">
   <% listNames.forEach((listName) => { %>
     <div class="menu-grid-item">
       <a href="/<%= listName.list_name_encoded %>"><%= listName.display_name %></a>
