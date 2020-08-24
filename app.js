@@ -22,13 +22,18 @@ app.get('/', (req, res) => {
 
 app.get('/:listName', (req, res) => {
   const selectedListId = listNames.findIndex(x => x.list_name_encoded === req.params.listName);
-  nytAPI.getBestSellers(req.params.listName, (data) => {
-    const content = data;
-    content.pageTitle = listNames[selectedListId].display_name;
-    content.selectedListId = selectedListId;
-    content.listNames = listNames;
-    res.render('home', content);
-  });
+  console.log(selectedListId);
+  if (selectedListId >= 0) {
+    nytAPI.getBestSellers(req.params.listName, (data) => {
+      const content = data;
+      content.pageTitle = listNames[selectedListId].display_name;
+      content.selectedListId = selectedListId;
+      content.listNames = listNames;
+      res.render('home', content);
+    });
+  } else {
+    res.render('404');
+  }
 });
 
 app.listen(port, () => {
